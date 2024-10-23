@@ -12,7 +12,7 @@ class ChirpController extends Controller
      */
     public function index()
     {
-        $chirps = Chirp::paginate();
+        $chirps = Chirp::with('user')->paginate();
 
         return view('chirps.index', compact('chirps'));
     }
@@ -30,7 +30,13 @@ class ChirpController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'message' => 'required|string|max:255',
+        ]);
+
+        $request->user()->chirps()->create($validated);
+
+        return redirect(route('chirps.index'));
     }
 
     /**
