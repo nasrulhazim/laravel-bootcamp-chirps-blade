@@ -26,6 +26,7 @@
                                     <small class="text-sm text-gray-600"> &middot; {{ __('edited') }}</small>
                                 @endunless
                             </div>
+
                             @if ($chirp->user->is(auth()->user()))
                                 <x-dropdown>
                                     <x-slot name="trigger">
@@ -56,6 +57,7 @@
                                     </x-slot>
                                 </x-dropdown>
                             @endif
+
                         </div>
                         <p class="mt-4 text-lg text-gray-900">{{ $chirp->message }}</p>
                     </div>
