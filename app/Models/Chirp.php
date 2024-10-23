@@ -9,4 +9,8 @@ class Chirp extends Model
 {
     /** @use HasFactory<\Database\Factories\ChirpFactory> */
     use HasFactory;
+
+    protected $fillable = [
+        'message',
+    ];
 }
