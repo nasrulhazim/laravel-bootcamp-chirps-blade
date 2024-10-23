@@ -12,7 +12,9 @@ class ChirpController extends Controller
      */
     public function index()
     {
-        //
+        $chirps = Chirp::paginate();
+
+        return view('chirps.index', compact('chirps'));
     }
 
     /**
