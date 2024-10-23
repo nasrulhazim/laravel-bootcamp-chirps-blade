@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Chirp;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DevSeeder extends Seeder
@@ -17,6 +17,11 @@ class DevSeeder extends Seeder
             return;
         }
 
-        Chirp::factory(100)->create();
+        User::factory(rand(5, 10))->create()
+            ->each(
+                fn(User $user) => Chirp::factory(rand(10, 20)
+            )->create(
+                ['user_id' => $user->id]
+            ));
     }
 }
